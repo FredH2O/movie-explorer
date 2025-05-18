@@ -1,3 +1,11 @@
+import HeroSection from "@/components/HeroSection";
+import ScrollDown from "@/components/ScrollDown/ScrollIcon";
+
 export default function Home() {
-  return <div>Test</div>;
+  return (
+    <div>
+      <HeroSection />
+      <ScrollDown />
+    </div>
+  );
 }
