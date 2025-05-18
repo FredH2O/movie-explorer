@@ -1,0 +1,90 @@
+import MediaCard from "./MediaCard";
+import { mockMedia, mockMedia1, mockMedia2 } from "@/data/dummyData";
+
+const MediaGallery = () => {
+  return (
+    <section className="grid grid-cols-5 gap-3 justify-center items-center container m-auto">
+      <MediaCard
+        poster={mockMedia.Poster}
+        title={mockMedia.Title}
+        year={mockMedia.Year}
+        genre={mockMedia.Genre}
+        runtime={mockMedia.Runtime}
+        imdbRating={mockMedia.imdbRating}
+      />
+      <MediaCard
+        poster={mockMedia1.Poster}
+        title={mockMedia1.Title}
+        year={mockMedia1.Year}
+        genre={mockMedia1.Genre}
+        runtime={mockMedia1.Runtime}
+        imdbRating={mockMedia1.imdbRating}
+      />
+      <MediaCard
+        poster={mockMedia2.Poster}
+        title={mockMedia2.Title}
+        year={mockMedia2.Year}
+        genre={mockMedia2.Genre}
+        runtime={mockMedia2.Runtime}
+        imdbRating={mockMedia2.imdbRating}
+      />
+      <MediaCard
+        poster={mockMedia.Poster}
+        title={mockMedia.Title}
+        year={mockMedia.Year}
+        genre={mockMedia.Genre}
+        runtime={mockMedia.Runtime}
+        imdbRating={mockMedia.imdbRating}
+      />
+      <MediaCard
+        poster={mockMedia1.Poster}
+        title={mockMedia1.Title}
+        year={mockMedia1.Year}
+        genre={mockMedia1.Genre}
+        runtime={mockMedia1.Runtime}
+        imdbRating={mockMedia1.imdbRating}
+      />
+      <MediaCard
+        poster={mockMedia2.Poster}
+        title={mockMedia2.Title}
+        year={mockMedia2.Year}
+        genre={mockMedia2.Genre}
+        runtime={mockMedia2.Runtime}
+        imdbRating={mockMedia2.imdbRating}
+      />
+      <MediaCard
+        poster={mockMedia.Poster}
+        title={mockMedia.Title}
+        year={mockMedia.Year}
+        genre={mockMedia.Genre}
+        runtime={mockMedia.Runtime}
+        imdbRating={mockMedia.imdbRating}
+      />
+      <MediaCard
+        poster={mockMedia1.Poster}
+        title={mockMedia1.Title}
+        year={mockMedia1.Year}
+        genre={mockMedia1.Genre}
+        runtime={mockMedia1.Runtime}
+        imdbRating={mockMedia1.imdbRating}
+      />
+      <MediaCard
+        poster={mockMedia2.Poster}
+        title={mockMedia2.Title}
+        year={mockMedia2.Year}
+        genre={mockMedia2.Genre}
+        runtime={mockMedia2.Runtime}
+        imdbRating={mockMedia2.imdbRating}
+      />
+      <MediaCard
+        poster={mockMedia.Poster}
+        title={mockMedia.Title}
+        year={mockMedia.Year}
+        genre={mockMedia.Genre}
+        runtime={mockMedia.Runtime}
+        imdbRating={mockMedia.imdbRating}
+      />
+    </section>
+  );
+};
+export default MediaGallery;

@@ -5,7 +5,7 @@ const Navigation = ["Home", "Movies", "TV Series"];
 
 const Header = () => {
   return (
-    <header className="bg-gray-500 border-b border-slate-800">
+    <header className="bg-slate-500 border-b border-slate-800">
       <nav className="flex items-center justify-evenly py-3 px-5">
         <div className="flex gap-2 justify-center items-center">
           <div className="bg-slate-400 rounded-full p-1">

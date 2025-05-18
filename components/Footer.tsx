@@ -1,10 +1,10 @@
 const Footer = () => {
   return (
-    <footer className="bg-surface text-textMuted text-sm py-6 mt-auto border-t border-slate-800">
+    <footer className="bg-slate-500 text-sm py-6 mt-auto border-t border-slate-800">
       <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
         <p>
           &copy; {new Date().getFullYear()}{" "}
-          <span className="text-primary font-semibold">
+          <span className="font-semibold">
             Movie <span className="text-emerald-500">Explorer</span>
           </span>
           . All rights reserved.

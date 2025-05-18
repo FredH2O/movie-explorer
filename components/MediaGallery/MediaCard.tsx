@@ -1,0 +1,43 @@
+import Image from "next/image";
+
+type MediaProps = {
+  poster: string;
+  title: string;
+  year: string;
+  genre: string;
+  runtime: string;
+  imdbRating: string;
+};
+
+const MediaCard = ({
+  poster,
+  title,
+  year,
+  genre,
+  runtime,
+  imdbRating,
+}: MediaProps) => {
+  return (
+    <>
+      <div className="bg-gray-800 rounded-lg overflow-hidden shadow-md text-white w-60">
+        <Image
+          src={poster}
+          alt={title}
+          width={240}
+          height={360}
+          className="w-full h-auto object-cover"
+        />
+        <div className="p-4 space-y-2 bg-black">
+          <h2 className="text-lg font-semibold">{title}</h2>
+          <p className="text-sm text-gray-400">
+            {year} • {genre}
+          </p>
+          <p className="italic text-xs">Duration: {runtime}</p>
+          <p className="mt-2 text-sm">⭐ {imdbRating}</p>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default MediaCard;

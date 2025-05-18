@@ -13,9 +13,9 @@ const HeroSection = () => {
         <form className="flex flex-row justify-center py-10">
           <input
             type="text"
-            className="bg-white outline-0 px-5 py-3 text-xl text-black max-w-md rounded-l-md w-[500px]"
+            className="bg-white  outline-0 px-5 py-3 text-xl text-black max-w-md rounded-l-md w-[500px]"
           />
-          <button className="bg-emerald-500 border px-5 py-2 cursor-pointer rounded-r-md hover:bg-emerald-700 hover:text-black">
+          <button className="bg-emerald-500 transition-all duration-300 border px-5 py-2 cursor-pointer rounded-r-md hover:bg-emerald-700 hover:text-black">
             Search
           </button>
         </form>

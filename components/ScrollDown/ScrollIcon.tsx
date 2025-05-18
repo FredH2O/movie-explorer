@@ -1,12 +1,23 @@
+"use client";
 import styles from "./ScrollDown.module.css";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const ScrollDown = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+
   return (
-    <div className={styles.container_mouse}>
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 1 }}
+      animate={{ opacity: isInView ? 0 : 1 }}
+      transition={{ duration: 1 }}
+    >
       <span className={styles["mouse-btn"]}>
         <span className={styles["mouse-scroll"]}></span>
       </span>
-    </div>
+    </motion.div>
   );
 };
 
