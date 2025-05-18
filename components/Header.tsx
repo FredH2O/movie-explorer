@@ -1,0 +1,38 @@
+import Image from "next/image";
+import Logo from "@/public/images/movie-explorer-logo.png";
+
+const Navigation = ["Home", "Movies", "TV Series"];
+
+const Header = () => {
+  return (
+    <header className="bg-gray-500 border-b border-slate-800">
+      <nav className="flex items-center justify-evenly py-3 px-5">
+        <div className="flex gap-2 justify-center items-center">
+          <div className="bg-slate-400 rounded-full p-1">
+            <Image
+              src={Logo}
+              alt="Movie Explorer Logo"
+              width={30}
+              height={30}
+            />
+          </div>
+          <h1 className="text-3xl font-bold">
+            Movie <span className="text-emerald-400">Explorer</span>
+          </h1>
+        </div>
+        <ul className="flex gap-3">
+          {Navigation.map((label) => (
+            <li
+              className="p-1 hover:text-black rounded-sm transition-all duration-300 hover:bg-emerald-500"
+              key={label}
+            >
+              <a href="#">{label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
+  );
+};
+
+export default Header;
