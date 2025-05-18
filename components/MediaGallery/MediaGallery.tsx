@@ -3,7 +3,7 @@ import { mockMedia, mockMedia1, mockMedia2 } from "@/data/dummyData";
 
 const MediaGallery = () => {
   return (
-    <section className="grid grid-cols-5 gap-3 justify-center items-center container m-auto">
+    <section className="grid my-10 py-5 grid-cols-5 gap-3 justify-center place-items-center container m-auto">
       <MediaCard
         poster={mockMedia.Poster}
         title={mockMedia.Title}

@@ -19,7 +19,7 @@ const MediaCard = ({
 }: MediaProps) => {
   return (
     <>
-      <div className="bg-gray-800 rounded-lg overflow-hidden shadow-md text-white w-60">
+      <div className="bg-gray-800 opacity-95 hover:opacity-100 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer rounded-lg overflow-hidden shadow-md text-white w-60">
         <Image
           src={poster}
           alt={title}
@@ -27,7 +27,7 @@ const MediaCard = ({
           height={360}
           className="w-full h-auto object-cover"
         />
-        <div className="p-4 space-y-2 bg-black">
+        <div className="p-4 space-y-2 bg-slate-700">
           <h2 className="text-lg font-semibold">{title}</h2>
           <p className="text-sm text-gray-400">
             {year} • {genre}
