@@ -10,6 +10,14 @@ type Movie = {
   Poster: string;
 };
 
+type SearchResult = {
+  Title: string;
+  Year: string;
+  imdbID: string;
+  Type: string;
+  Poster: string;
+};
+
 type OMDbResponse = {
   Search?: Movie[];
   totalResults?: string;
