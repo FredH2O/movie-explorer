@@ -25,7 +25,8 @@ const MediaCard = ({
           alt={title}
           width={240}
           height={360}
-          className="w-full h-auto object-cover"
+          priority
+          className="md:w-full md:h-auto object-cover"
         />
         <div className="p-4 space-y-2 bg-slate-700">
           <h2 className="text-lg font-semibold">{title}</h2>

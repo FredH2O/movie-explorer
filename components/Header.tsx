@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Logo from "@/public/images/movie-explorer-logo.png";
 
-const Navigation = ["Home", "Movies", "TV Series"];
+const Navigation = ["Home", "Movies", "Favorites"];
 
 const Header = () => {
   return (

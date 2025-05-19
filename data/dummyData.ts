@@ -25,7 +25,7 @@ export const mockMedia1: Media = {
   Runtime: "2h 15min",
   Genre: "Action, Adventure",
   Poster:
-    "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjczNF5BMl5BanBnXkFtZTgwNzYzODI5NzE@._V1_SX300.jpg",
+    "https://m.media-amazon.com/images/M/MV5BODI4NzMyNjE0MF5BMl5BanBnXkFtZTgwMTcwNzI0MzE@._V1_SX300.jpg",
   imdbRating: "7.8",
   Type: "movie",
 };
@@ -36,7 +36,7 @@ export const mockMedia2: Media = {
   Runtime: "1h 40min",
   Genre: "Drama, Romance",
   Poster:
-    "https://m.media-amazon.com/images/M/MV5BMjEwMjk2MjQ2MV5BMl5BanBnXkFtZTgwNzY3NDEwNjE@._V1_SX300.jpg",
+    "https://m.media-amazon.com/images/M/MV5BODI4NzMyNjE0MF5BMl5BanBnXkFtZTgwMTcwNzI0MzE@._V1_SX300.jpg",
   imdbRating: "8.2",
   Type: "movie",
 };
