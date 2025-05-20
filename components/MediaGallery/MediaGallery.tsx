@@ -1,13 +1,11 @@
 "use client";
 import MediaCard from "./MediaCard";
-import { useState } from "react";
 import useMovieSearch from "@/hooks/useMovieSearch";
+import { useSearch } from "@/context/SearchContext";
 
 const MediaGallery = () => {
-  const [searchTerm] = useState("ghost");
-  const [page] = useState(1);
-
-  const { movies = [], loading, error } = useMovieSearch(searchTerm, page);
+  const { searchTerm } = useSearch();
+  const { movies = [], loading, error } = useMovieSearch(searchTerm, 1);
 
   return (
     <section className="container m-auto">
