@@ -6,7 +6,7 @@ type Rating = {
   Value: string;
 };
 
-type MovieDetailsType = {
+export type MovieDetailsType = {
   Title: string;
   Rated: string;
   Released: string;
@@ -18,8 +18,6 @@ type MovieDetailsType = {
   Plot: string;
   Poster: string;
   Ratings: Rating[];
-  Metascore: string;
-  imdbRating: string;
 };
 
 const useMovieDetails = (imdbID: string | null) => {

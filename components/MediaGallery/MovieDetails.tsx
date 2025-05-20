@@ -1,11 +1,25 @@
+import { MovieDetailsType } from "@/hooks/useMovieDetail";
 import Image from "next/image";
 import { FormEvent } from "react";
 
-type Props = {
+type MovieDetailsProps = MovieDetailsType & {
   onClick: (e: FormEvent<HTMLButtonElement>) => void;
 };
 
-const MovieDetails = ({ onClick }: Props) => {
+const MovieDetails = ({
+  onClick,
+  Title,
+  Rated,
+  Released,
+  Runtime,
+  Genre,
+  Director,
+  Writer,
+  Actors,
+  Plot,
+  Poster,
+  Ratings,
+}: MovieDetailsProps) => {
   return (
     <div className="fixed inset-0 z-10 flex justify-center items-center">
       {/* Background overlay */}
@@ -13,35 +27,38 @@ const MovieDetails = ({ onClick }: Props) => {
 
       {/* Modal content */}
       <div className="relative z-20 lg:max-w-6xl bg-slate-300 text-black p-6 rounded-lg flex flex-col md:flex-row gap-4 shadow-lg">
-        <Image
-          src="/images/example-image.webp"
-          alt="Example Image"
-          width={360}
-          height={240}
-        />
+        <Image src={Poster} alt="Example Image" width={360} height={240} />
         <div className="border relative p-3 flex-1">
-          <h2 className="text-2xl font-bold">Final Destination Bloodlines</h2>
+          <div>
+            <h2 className="text-2xl font-bold">{Title}</h2>
+          </div>
+
+          <div>Genre: {Genre}</div>
 
           <div>
-            <p>Year: 2025</p>
-            <p>Score: 7.8</p>
-            <p>Runtime: 138 min</p>
+            <ul>
+              {Ratings.map((rating) => (
+                <li key={rating.Source}>
+                  {rating.Source} - {rating.Value}
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div>
-            <p>Director: (Director) Ang Lee</p>
-            <p>Writer: (Writer) Stan Lee, Jack Kirby, James Schamus</p>
-            <p>Actors: (Actors) Eric Bana, Jennifer Connelly, Sam Elliott</p>
+            <p>Year: {Released}</p>
+            <p>Rated: {Rated}</p>
+            <p>Runtime: {Runtime}</p>
           </div>
 
           <div>
-            <p>
-              Description: (Plot) Bruce is an ordinary Gamma expert who one day
-              gets blasted with radiation and somehow survives. But in the
-              process a monster was born. Now whenever he gets angry he grows
-              bigger and stronger until he is no longer Bruce Banner. He becomes
-              The Hulk
-            </p>
+            <p>Director: {Director}</p>
+            <p>Writer: {Writer}</p>
+            <p>Actors: {Actors}</p>
+          </div>
+
+          <div>
+            <p>Description: {Plot}</p>
           </div>
 
           <button
