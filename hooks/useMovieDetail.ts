@@ -38,7 +38,7 @@ const useMovieDetails = (imdbID: string | null) => {
             params: {
               apikey: process.env.NEXT_PUBLIC_OMDB_API_KEY,
               i: imdbID,
-              plot: "full",
+              plot: "short",
             },
           }
         );

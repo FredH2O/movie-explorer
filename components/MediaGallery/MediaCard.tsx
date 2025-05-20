@@ -4,13 +4,17 @@ type MediaProps = {
   poster: string;
   title: string;
   year: string;
+  onClick: () => void;
 };
 
-const MediaCard = ({ poster, title, year }: MediaProps) => {
+const MediaCard = ({ poster, title, year, onClick }: MediaProps) => {
   const isValidPoster = poster !== "N/A" && poster.startsWith("http");
 
   return (
-    <div className="bg-gray-800 opacity-95 hover:opacity-100 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer rounded-lg overflow-hidden shadow-md text-white md:w-60 w-90 h-[500px] flex flex-col">
+    <div
+      onClick={onClick}
+      className="bg-gray-800 opacity-95 hover:opacity-100 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer rounded-lg overflow-hidden shadow-md text-white md:w-60 w-90 h-[500px] flex flex-col"
+    >
       {/* Fixed image container */}
       <div className="h-[360px] w-full relative">
         {isValidPoster ? (

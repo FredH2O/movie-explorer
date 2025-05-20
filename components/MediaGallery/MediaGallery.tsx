@@ -8,20 +8,29 @@ import { useSearch } from "@/context/SearchContext";
 
 const MediaGallery = () => {
   const { searchTerm } = useSearch();
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+
   const {
     movies = [],
     loading: searchLoading,
     error: searchError,
   } = useMovieSearch(searchTerm, 1);
+
   const {
     details,
     loading: detailsLoading,
     error: detailsError,
-  } = useMovieDetails();
+  } = useMovieDetails(selectedId);
   const [movieDetails, setMovieDetails] = useState(false);
 
-  const handleMovieDetails = () => {
+  const handleMovieDetails = (imdbID: string) => {
+    setSelectedId(imdbID);
     setMovieDetails(true);
+  };
+
+  const handleResetMovieDetails = () => {
+    setMovieDetails(false);
+    setSelectedId(null);
   };
 
   return (
@@ -35,15 +44,18 @@ const MediaGallery = () => {
         {!searchLoading && movies.length === 0 && (
           <p className="text-center text-gray-500">No results found.</p>
         )}
-        {movieDetails && (
-          <MovieDetails onClick={() => setMovieDetails(false)} />
+        {detailsLoading && <p>Loading movie details..</p>}
+        {detailsError && <p>Error trying to get details..</p>}
+        {movieDetails && details && (
+          <MovieDetails
+            onClick={() => handleResetMovieDetails()}
+            {...details}
+          />
         )}
-        <div
-          onClick={handleMovieDetails}
-          className="grid my-3 p-3 gap-3 justify-center place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
-        >
+        <div className="grid my-3 p-3 gap-3 justify-center place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {movies.map((movie) => (
             <MediaCard
+              onClick={() => handleMovieDetails(movie.imdbID)}
               key={movie.imdbID}
               title={movie.Title}
               poster={movie.Poster}

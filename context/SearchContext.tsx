@@ -19,7 +19,7 @@ type SearchContextType = {
 const SearchContext = createContext<SearchContextType | undefined>(undefined);
 
 export const SearchProvider = ({ children }: { children: ReactNode }) => {
-  const [searchTerm, setSearchTerm] = useState("jaw");
+  const [searchTerm, setSearchTerm] = useState("");
   const [inputValue, setInputValue] = useState<string>("");
 
   return (
