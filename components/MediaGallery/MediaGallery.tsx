@@ -1,13 +1,23 @@
 "use client";
 import MediaCard from "./MediaCard";
-import useMovieSearch from "@/hooks/useMovieSearch";
-import { useSearch } from "@/context/SearchContext";
 import { useState } from "react";
 import MovieDetails from "./MovieDetails";
+import useMovieDetails from "@/hooks/useMovieDetail";
+import useMovieSearch from "@/hooks/useMovieSearch";
+import { useSearch } from "@/context/SearchContext";
 
 const MediaGallery = () => {
   const { searchTerm } = useSearch();
-  const { movies = [], loading, error } = useMovieSearch(searchTerm, 1);
+  const {
+    movies = [],
+    loading: searchLoading,
+    error: searchError,
+  } = useMovieSearch(searchTerm, 1);
+  const {
+    details,
+    loading: detailsLoading,
+    error: detailsError,
+  } = useMovieDetails();
   const [movieDetails, setMovieDetails] = useState(false);
 
   const handleMovieDetails = () => {
@@ -20,9 +30,9 @@ const MediaGallery = () => {
         <h2 className="text-2xl font-bold mb-4">
           🔥 What Everyone&apos;s Watching Right Now!
         </h2>
-        {loading && <p className="text-center">Loading..</p>}
-        {error && <p>{error}</p>}
-        {!loading && movies.length === 0 && (
+        {searchLoading && <p className="text-center">Loading..</p>}
+        {searchError && <p>{searchError}</p>}
+        {!searchLoading && movies.length === 0 && (
           <p className="text-center text-gray-500">No results found.</p>
         )}
         {movieDetails && (
