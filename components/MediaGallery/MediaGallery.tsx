@@ -25,7 +25,9 @@ const MediaGallery = () => {
         {!loading && movies.length === 0 && (
           <p className="text-center text-gray-500">No results found.</p>
         )}
-        {!movieDetails && <MovieDetails />}
+        {movieDetails && (
+          <MovieDetails onClick={() => setMovieDetails(false)} />
+        )}
         <div
           onClick={handleMovieDetails}
           className="grid my-3 p-3 gap-3 justify-center place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"

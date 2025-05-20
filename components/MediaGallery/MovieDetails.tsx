@@ -1,6 +1,11 @@
 import Image from "next/image";
+import { FormEvent } from "react";
 
-const MovieDetails = () => {
+type Props = {
+  onClick: (e: FormEvent<HTMLButtonElement>) => void;
+};
+
+const MovieDetails = ({ onClick }: Props) => {
   return (
     <div className="fixed inset-0 z-10 flex justify-center items-center">
       {/* Background overlay */}
@@ -24,6 +29,12 @@ const MovieDetails = () => {
           </div>
 
           <div>
+            <p>Director: (Director) Ang Lee</p>
+            <p>Writer: (Writer) Stan Lee, Jack Kirby, James Schamus</p>
+            <p>Actors: (Actors) Eric Bana, Jennifer Connelly, Sam Elliott</p>
+          </div>
+
+          <div>
             <p>
               Description: (Plot) Bruce is an ordinary Gamma expert who one day
               gets blasted with radiation and somehow survives. But in the
@@ -34,6 +45,7 @@ const MovieDetails = () => {
           </div>
 
           <button
+            onClick={onClick}
             className="bg-red-500 px-2 py-1 rounded text-white absolute cursor-pointer bottom-3 right-3"
             type="button"
           >
