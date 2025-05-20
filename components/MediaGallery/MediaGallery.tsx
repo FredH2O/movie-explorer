@@ -2,10 +2,17 @@
 import MediaCard from "./MediaCard";
 import useMovieSearch from "@/hooks/useMovieSearch";
 import { useSearch } from "@/context/SearchContext";
+import { useState } from "react";
+import MovieDetails from "./MovieDetails";
 
 const MediaGallery = () => {
   const { searchTerm } = useSearch();
   const { movies = [], loading, error } = useMovieSearch(searchTerm, 1);
+  const [movieDetails, setMovieDetails] = useState(false);
+
+  const handleMovieDetails = () => {
+    setMovieDetails(true);
+  };
 
   return (
     <section className="container m-auto">
@@ -18,16 +25,17 @@ const MediaGallery = () => {
         {!loading && movies.length === 0 && (
           <p className="text-center text-gray-500">No results found.</p>
         )}
-        <div className="grid my-3 p-3 gap-3 justify-center place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        {!movieDetails && <MovieDetails />}
+        <div
+          onClick={handleMovieDetails}
+          className="grid my-3 p-3 gap-3 justify-center place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+        >
           {movies.map((movie) => (
             <MediaCard
               key={movie.imdbID}
               title={movie.Title}
               poster={movie.Poster}
               year={movie.Year}
-              genre=""
-              runtime=""
-              imdbRating=""
             />
           ))}
         </div>
