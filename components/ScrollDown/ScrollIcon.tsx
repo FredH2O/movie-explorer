@@ -5,14 +5,17 @@ import { useRef } from "react";
 
 const ScrollDown = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref);
+  const isInView = useInView(ref, {
+    amount: 1,
+    once: false,
+  });
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 1 }}
-      animate={{ opacity: isInView ? 0 : 1 }}
-      transition={{ duration: 1 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: isInView ? 1 : 0 }}
+      transition={{ duration: 0.5 }}
     >
       <span className={styles["mouse-btn"]}>
         <span className={styles["mouse-scroll"]}></span>

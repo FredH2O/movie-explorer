@@ -36,12 +36,19 @@ const MediaGallery = () => {
   return (
     <section className="container m-auto">
       <div className="">
-        <h2 className="text-2xl font-bold mb-4 text-center px-3">
-          Dive into the details of your favorite films 🎬🍿
-        </h2>
+        {searchTerm !== "" && movies.length >= 1 && (
+          <h2 className="text-2xl font-bold mb-4 text-center px-3">
+            Dive into the details of your favorite films 🎬🍿
+          </h2>
+        )}
+        {searchTerm === "" && (
+          <p className="text-center text-gray-500">
+            Start by typing a movie title above.
+          </p>
+        )}
         {searchLoading && <p className="text-center">Loading..</p>}
         {searchError && <p>{searchError}</p>}
-        {!searchLoading && movies.length === 0 && (
+        {searchTerm !== "" && !searchLoading && movies.length === 0 && (
           <p className="text-center text-gray-500">No results found.</p>
         )}
         {detailsLoading && <p>Loading movie details..</p>}
