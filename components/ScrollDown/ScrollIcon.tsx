@@ -6,16 +6,17 @@ import { useRef } from "react";
 const ScrollDown = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, {
-    amount: 1,
+    amount: 0.5,
     once: false,
   });
 
   return (
     <motion.div
+      className="py-12"
       ref={ref}
       initial={{ opacity: 0 }}
       animate={{ opacity: isInView ? 1 : 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 1 }}
     >
       <span className={styles["mouse-btn"]}>
         <span className={styles["mouse-scroll"]}></span>
