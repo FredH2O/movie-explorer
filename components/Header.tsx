@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Logo from "@/public/images/movie-explorer-logo.png";
-
-const Navigation = ["Home", "Movies", "Favorites"];
+import BurgerMenu from "./BurgerMenu";
 
 const Header = () => {
   return (
@@ -20,16 +19,7 @@ const Header = () => {
             Movie <span className="text-emerald-400">Explorer</span>
           </h1>
         </div>
-        <ul className="flex gap-3">
-          {Navigation.map((label) => (
-            <li
-              className="p-1 hover:text-black rounded-sm transition-all duration-300 hover:bg-emerald-500"
-              key={label}
-            >
-              <a href="#">{label}</a>
-            </li>
-          ))}
-        </ul>
+        <BurgerMenu />
       </nav>
     </header>
   );

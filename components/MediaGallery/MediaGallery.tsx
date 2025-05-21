@@ -39,12 +39,12 @@ const MediaGallery = () => {
   };
 
   return (
-    <section className="container m-auto">
+    <section className="relative container m-auto">
       <div className="p-5">
         {searchTerm !== "" && movies.length >= 1 && (
           <>
             <ScrollDown />
-            <h2 className="text-2xl font-bold py-10 mb-4 text-center px-3">
+            <h2 className="text-3xl font-bold py-10 mb-4 text-center px-3">
               Dive into the details of your favorite films 🎬🍿
             </h2>
           </>
@@ -69,7 +69,7 @@ const MediaGallery = () => {
             {...details}
           />
         )}
-        <div className="grid my-3 p-3 gap-3 justify-center place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        <div className="grid my-3 p-3 gap-10 justify-center place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {movies.map((movie) => (
             <MediaCard
               onClick={() => handleMovieDetails(movie.imdbID)}

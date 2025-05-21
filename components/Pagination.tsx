@@ -18,11 +18,13 @@ const Pagination = ({
   }
 
   return (
-    <div className="flex gap-2 mt-4 flex-wrap">
+    <div className="flex gap-2 md:p-20 flex-wrap justify-center py-10">
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="px-3 py-1 border rounded disabled:opacity-50"
+        className={`px-3 py-1 transition-all duration-300 border ${
+          currentPage === 1 ? "disabled:opacity-50" : "hover:bg-emerald-500"
+        } rounded  cursor-pointer`}
       >
         Prev
       </button>
@@ -31,8 +33,8 @@ const Pagination = ({
         <button
           key={page}
           onClick={() => onPageChange(page)}
-          className={`px-3 py-1 border rounded ${
-            page === currentPage ? "bg-blue-500 text-white" : ""
+          className={`px-3 hover:bg-emerald-500 transition-all duration-300 py-1 border rounded cursor-pointer ${
+            page === currentPage ? "bg-emerald-500 text-white" : ""
           }`}
         >
           {page}
@@ -42,7 +44,11 @@ const Pagination = ({
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="px-3 py-1 border rounded disabled:opacity-50"
+        className={`px-3 cursor-pointer transition-all duration-300 ${
+          currentPage === totalPages
+            ? "disabled:opacity-50"
+            : "hover:bg-emerald-500"
+        }  py-1 border rounded `}
       >
         Next
       </button>
