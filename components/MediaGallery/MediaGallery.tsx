@@ -36,8 +36,8 @@ const MediaGallery = () => {
   return (
     <section className="container m-auto">
       <div className="">
-        <h2 className="text-2xl font-bold mb-4">
-          🔥 What Everyone&apos;s Watching Right Now!
+        <h2 className="text-2xl font-bold mb-4 text-center px-3">
+          Dive into the details of your favorite films 🎬🍿
         </h2>
         {searchLoading && <p className="text-center">Loading..</p>}
         {searchError && <p>{searchError}</p>}
