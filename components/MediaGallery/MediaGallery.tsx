@@ -7,9 +7,10 @@ import useMovieSearch from "@/hooks/useMovieSearch";
 import { useSearch } from "@/context/SearchContext";
 import ScrollDown from "../ScrollDown/ScrollIcon";
 import Pagination from "../Pagination";
+import Favourites from "../Favourites";
 
 const MediaGallery = () => {
-  const { searchTerm } = useSearch();
+  const { searchTerm, openFavourites } = useSearch();
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [page, setPage] = useState<number>(1);
 
@@ -41,6 +42,7 @@ const MediaGallery = () => {
   return (
     <section className="relative container m-auto">
       <div className="p-5">
+        {openFavourites && <Favourites />}
         {searchTerm !== "" && movies.length >= 1 && (
           <>
             <ScrollDown />

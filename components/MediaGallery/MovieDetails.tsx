@@ -1,6 +1,7 @@
 import { MovieDetailsType } from "@/hooks/useMovieDetail";
 import Image from "next/image";
 import { FormEvent } from "react";
+import FavouriteButton from "../FavouriteButton";
 
 type MovieDetailsProps = MovieDetailsType & {
   onClick: (e: FormEvent<HTMLButtonElement>) => void;
@@ -100,6 +101,7 @@ const MovieDetails = ({
           </div>
 
           <div className="flex justify-end p-1">
+            <FavouriteButton title={Title} released={Released} />
             <button
               onClick={onClick}
               className="bg-red-500 hover:-translate-y-0.5 rounded hover:bg-red-600 transition-all duration-300 px-2 py-1 text-white cursor-pointer w-[100px]"
