@@ -1,10 +1,10 @@
 import { MovieDetailsType } from "@/hooks/useMovieDetail";
 import Image from "next/image";
-import { FormEvent } from "react";
+import { MouseEvent } from "react";
 import FavouriteButton from "../FavouriteButton";
 
 type MovieDetailsProps = MovieDetailsType & {
-  onClick: (e: FormEvent<HTMLButtonElement>) => void;
+  onClick: (e: MouseEvent) => void;
 };
 
 const MovieDetails = ({
@@ -24,7 +24,10 @@ const MovieDetails = ({
   return (
     <div className="fixed inset-0 z-10 flex justify-center items-center p-1">
       {/* Background overlay */}
-      <div className="absolute inset-0 bg-black opacity-95"></div>
+      <div
+        onClick={onClick}
+        className="absolute inset-0 -z-10 bg-black opacity-95"
+      ></div>
 
       {/* Modal content */}
       <div className="relative z-20 lg:max-w-6xl bg-slate-300 text-black p-6  flex flex-col gap-4 shadow-lg overflow-y-auto max-h-screen">
@@ -104,7 +107,7 @@ const MovieDetails = ({
             <FavouriteButton title={Title} released={Released} />
             <button
               onClick={onClick}
-              className="bg-red-500 hover:-translate-y-0.5 rounded hover:bg-red-600 transition-all duration-300 px-2 py-1 text-white cursor-pointer w-[100px]"
+              className="bg-red-500 hover:-translate-y-0.5 rounded hover:bg-red-600 transition-all duration-300 text-white cursor-pointer px-3 border"
               type="button"
             >
               Close

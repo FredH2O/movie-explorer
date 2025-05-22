@@ -31,8 +31,8 @@ const FavouriteButton = ({ title, released }: FavouriteButton) => {
         onClick={toggleFavourite}
         className={`group flex items-center gap-2 px-3 py-1 rounded-md text-sm font-medium transition-transform duration-200 ${
           isFavourited
-            ? "text-red-600 bg-red-50 border border-red-200 cursor-pointer"
-            : "text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 border border-transparent"
+            ? "text-red-600 font-semibold bg-red-50 border border-red-200 cursor-pointer"
+            : "text-gray-900 font-semibold hover:text-emerald-600 hover:bg-emerald-50 border border-transparent"
         } hover:-translate-y-0.5 active:translate-y-0`}
       >
         {isFavourited ? (
