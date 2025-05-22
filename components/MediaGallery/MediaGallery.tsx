@@ -5,6 +5,7 @@ import MovieDetails from "./MovieDetails";
 import useMovieDetails from "@/hooks/useMovieDetail";
 import useMovieSearch from "@/hooks/useMovieSearch";
 import { useSearch } from "@/context/SearchContext";
+import { useTheme } from "@/context/ThemeChanger";
 import ScrollDown from "../ScrollDown/ScrollIcon";
 import Pagination from "../Pagination";
 import Favourites from "../Favourites";
@@ -13,6 +14,7 @@ const MediaGallery = () => {
   const { searchTerm, openFavourites } = useSearch();
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [page, setPage] = useState<number>(1);
+  const { theme } = useTheme();
 
   const {
     movies = [],
@@ -40,8 +42,14 @@ const MediaGallery = () => {
   };
 
   return (
-    <section className="relative container m-auto">
-      <div className="p-5">
+    <section
+      className={`transition-all duration-500 ${
+        theme === "dark"
+          ? "bg-slate-800 text-slate-300"
+          : "bg-slate-300 text-slate-800"
+      } relative`}
+    >
+      <div className="p-5 container m-auto">
         {openFavourites && <Favourites />}
         {searchTerm !== "" && movies.length >= 1 && (
           <>
@@ -53,9 +61,7 @@ const MediaGallery = () => {
         )}
         {searchTerm === "" && (
           <div className="flex justify-center items-center max-h-full h-[500px]">
-            <p className="text-center text-gray-500">
-              Start by typing a movie title above.
-            </p>
+            <p className="text-center ">Start by typing a movie title above.</p>
           </div>
         )}
         {searchLoading && <p className="text-center">Loading..</p>}
@@ -75,6 +81,7 @@ const MediaGallery = () => {
           {movies.map((movie) => (
             <MediaCard
               onClick={() => handleMovieDetails(movie.imdbID)}
+              theme={theme}
               key={movie.imdbID}
               title={movie.Title}
               poster={movie.Poster}

@@ -2,17 +2,24 @@
 
 import { useSearch } from "@/context/SearchContext";
 import { FormEvent } from "react";
+import { useTheme } from "@/context/ThemeChanger";
 
 const HeroSection = () => {
   const { setSearchTerm, setInputValue, inputValue } = useSearch();
-
+  const { theme } = useTheme();
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setSearchTerm(inputValue);
   };
 
   return (
-    <section className="bg-gray-900 text-white py-16">
+    <section
+      className={`transition-all duration-500 ${
+        theme === "dark"
+          ? "bg-slate-900 text-slate-50"
+          : "bg-slate-50 text-slate-900"
+      }  py-16`}
+    >
       <div className="max-w-4xl mx-auto px-4 text-center">
         <h1 className="text-4xl sm:text-6xl font-bold mb-4">
           Welcome to <span className="text-emerald-400">Movie Explorer</span>
