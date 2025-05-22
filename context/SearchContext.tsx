@@ -7,6 +7,7 @@ import {
   ReactNode,
   Dispatch,
   SetStateAction,
+  useEffect,
 } from "react";
 
 type favouriteProp = {
@@ -32,6 +33,21 @@ export const SearchProvider = ({ children }: { children: ReactNode }) => {
   const [inputValue, setInputValue] = useState<string>("");
   const [favourites, setFavourites] = useState<favouriteProp[]>([]);
   const [openFavourites, setOpenFavourites] = useState<boolean>(false);
+
+  useEffect(() => {
+    const storedFavourites = localStorage.getItem("favourites");
+    if (storedFavourites) {
+      try {
+        setFavourites(JSON.parse(storedFavourites));
+      } catch (err) {
+        console.error("Error parsing favourites from local storage:", err);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("favourites", JSON.stringify(favourites));
+  }, [favourites]);
 
   return (
     <SearchContext.Provider
