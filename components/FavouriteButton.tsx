@@ -1,5 +1,5 @@
 import { useSearch } from "@/context/SearchContext";
-import { Heart } from "lucide-react";
+import { Heart, HeartCrack } from "lucide-react";
 
 type FavouriteButton = {
   title: string;
@@ -9,28 +9,46 @@ type FavouriteButton = {
 const FavouriteButton = ({ title, released }: FavouriteButton) => {
   const { favourites, setFavourites } = useSearch();
 
-  const handleClick = () => {
-    const newFavourite = { title, released };
-    setFavourites([...favourites, newFavourite]);
-  };
-
   const isFavourited = favourites.some(
     (favo) => favo.title === title && favo.released === released
   );
 
+  const toggleFavourite = () => {
+    if (isFavourited) {
+      setFavourites(
+        favourites.filter(
+          (favo) => favo.title !== title || favo.released !== released
+        )
+      );
+    } else {
+      setFavourites([...favourites, { title, released }]);
+    }
+  };
+
   return (
-    <>
+    <div>
       <button
-        onClick={isFavourited ? undefined : handleClick}
-        className="text-black p-1 rounded cursor-pointer top-0 left-0"
+        onClick={toggleFavourite}
+        className={`group flex items-center gap-2 px-3 py-1 rounded-md text-sm font-medium transition-transform duration-200 ${
+          isFavourited
+            ? "text-red-600 bg-red-50 border border-red-200 cursor-pointer"
+            : "text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 border border-transparent"
+        } hover:-translate-y-0.5 active:translate-y-0`}
       >
-        <Heart
-          className={`transition-all duration-200 hover:-translate-y-1 active:translate-y-0 ${
-            isFavourited ? "text-red-500" : ""
-          }`}
-        />
+        {isFavourited ? (
+          <HeartCrack className="fill-gray-500 stroke-red-50" />
+        ) : (
+          <Heart
+            className={`w-5 h-5 transition-colors ${
+              isFavourited
+                ? "fill-red-500 stroke-red-500"
+                : "stroke-gray-400 hover:fill-red-500 group-hover:stroke-emerald-600"
+            }`}
+          />
+        )}
+        {isFavourited ? "Remove from Favourites" : "Add to Favourites"}
       </button>
-    </>
+    </div>
   );
 };
 

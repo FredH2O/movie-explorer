@@ -100,7 +100,7 @@ const MovieDetails = ({
             </p>
           </div>
 
-          <div className="flex justify-end p-1">
+          <div className="flex justify-between gap-3 items-center p-1">
             <FavouriteButton title={Title} released={Released} />
             <button
               onClick={onClick}
