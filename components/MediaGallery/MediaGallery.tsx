@@ -9,6 +9,7 @@ import { useTheme } from "@/context/ThemeChanger";
 import ScrollDown from "../ScrollDown/ScrollIcon";
 import Pagination from "../Pagination";
 import Favourites from "../Favourites";
+import { AnimatePresence, motion } from "framer-motion";
 
 const MediaGallery = () => {
   const { searchTerm, openFavourites } = useSearch();
@@ -59,6 +60,15 @@ const MediaGallery = () => {
             </h2>
           </>
         )}
+        {totalPages > 1 && (
+          <div className="flex justify-center">
+            <Pagination
+              currentPage={page}
+              totalPages={totalPages > 100 ? 100 : totalPages}
+              onPageChange={(newPage) => setPage(newPage)}
+            />
+          </div>
+        )}
         {searchTerm === "" && (
           <div className="flex justify-center items-center max-h-full h-[500px]">
             <p className="text-center ">Start by typing a movie title above.</p>
@@ -77,18 +87,26 @@ const MediaGallery = () => {
             {...details}
           />
         )}
-        <div className="grid my-3 p-3 gap-10 justify-center place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-          {movies.map((movie) => (
-            <MediaCard
-              onClick={() => handleMovieDetails(movie.imdbID)}
-              theme={theme}
-              key={movie.imdbID}
-              title={movie.Title}
-              poster={movie.Poster}
-              year={movie.Year}
-            />
-          ))}
-        </div>
+        <AnimatePresence>
+          <motion.div
+            key={page}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="grid my-3 p-3 gap-10 justify-center place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+          >
+            {movies.map((movie) => (
+              <MediaCard
+                onClick={() => handleMovieDetails(movie.imdbID)}
+                theme={theme}
+                key={movie.imdbID}
+                title={movie.Title}
+                poster={movie.Poster}
+                year={movie.Year}
+              />
+            ))}
+          </motion.div>
+        </AnimatePresence>
 
         {totalPages > 1 && (
           <div className="flex justify-center">
