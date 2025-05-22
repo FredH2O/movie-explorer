@@ -1,22 +1,28 @@
 "use client";
 
 import { useSearch } from "@/context/SearchContext";
+import { X } from "lucide-react";
 
 const Favourites = () => {
   const { favourites, setOpenFavourites } = useSearch();
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 p-4">
+    <div
+      onClick={() => setOpenFavourites(false)}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 p-4"
+    >
       <div className="relative bg-white text-black rounded-lg shadow-lg max-w-3xl w-full p-6 space-y-6 overflow-y-auto max-h-[90vh]">
         <button
           type="button"
           onClick={() => setOpenFavourites(false)}
-          className="absolute top-3 right-3 text-red-600 hover:text-red-800 font-semibold"
+          className="absolute top-3 right-3 text-red-600 hover:text-red-800 font-semibold cursor-pointer"
         >
-          ✕ Close
+          <X size={20} />
         </button>
 
-        <h2 className="text-2xl font-bold border-b pb-2">Your Favourites</h2>
+        <h2 className="text-2xl font-bold border-b pb-2 pt-10">
+          Your Favourites
+        </h2>
 
         {favourites.length === 0 ? (
           <p className="text-gray-500 italic">No favourites saved yet.</p>

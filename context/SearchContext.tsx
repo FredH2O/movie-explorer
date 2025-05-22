@@ -12,7 +12,6 @@ import {
 type favouriteProp = {
   title: string;
   released: string;
-  imdbID: string;
 };
 
 type SearchContextType = {
