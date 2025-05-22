@@ -19,6 +19,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Movie Explorer",
   description: "Movie Explorer is designed to see movies and series by depth.",
+  icons: {
+    icon: "/images/movie-explorer-logo-mobile.png",
+  },
 };
 
 export default function RootLayout({
