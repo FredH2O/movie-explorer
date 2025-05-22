@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SearchProvider } from "@/context/SearchContext";
+import { ThemeChanger } from "@/context/ThemeChanger";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,11 +31,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
-        <SearchProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
-        </SearchProvider>
-        <Footer />
+        <ThemeChanger>
+          <SearchProvider>
+            <Header />
+            <main className="flex-1">{children}</main>
+          </SearchProvider>
+          <Footer />
+        </ThemeChanger>
       </body>
     </html>
   );

@@ -1,5 +1,6 @@
 "use client";
 import { useSearch } from "@/context/SearchContext";
+import ThemeButton from "./ThemeButton";
 
 type NavigationItem =
   | { title: string; onClick: () => void }
@@ -25,7 +26,7 @@ const BurgerMenu = () => {
 
   return (
     <div>
-      <ul className="flex gap-3">
+      <ul className="flex justify-center items-center gap-5">
         {Navigation.map((label) => (
           <li
             onClick={"onClick" in label ? label.onClick : undefined}
@@ -35,6 +36,7 @@ const BurgerMenu = () => {
             <a href="#">{label.title}</a>
           </li>
         ))}
+        <ThemeButton />
       </ul>
     </div>
   );
