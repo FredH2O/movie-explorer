@@ -91,9 +91,11 @@ const BurgerMenu = () => {
             key={label.title}
           >
             {"href" in label ? (
-              <a href={label.href}>{label.title}</a>
+              <Link href={label.href}>{label.title}</Link>
             ) : (
-              <button className="text-inherit">{label.title}</button>
+              <button className="text-inherit cursor-pointer">
+                {label.title}
+              </button>
             )}
           </li>
         ))}
